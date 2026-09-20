@@ -32,4 +32,3 @@ Static HTML/JS on Supabase (shared with REACH). No build step. Deploy by copying
 - Email delivery of the acceptance letter (a Supabase Edge Function or the newsletter provider; the letter HTML is in `core.js`).
 - Join It API verification (today: staff verifies by hand from the queue).
 - Chapter-level admin (advisors seeing only their chapter) — the roles table already supports it; add a policy set when needed.
-- K–12 objects from `MYEFF_CRM_Upgrade_Spec.md` (schools, programs, ambassadors, session logs) as the next migration.
