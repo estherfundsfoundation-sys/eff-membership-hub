@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>EFF National · Admin | MyEFF</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@700&family=Poppins:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="myeff.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><span class="mark">EFF</span><span><b>MyEFF · Admin</b><small>National command center</small></span></a>
+  <nav id="tabsNav" class="hide"><button data-tab="dash" class="on">Dashboard</button><button data-tab="members">Members</button><button data-tab="queues">Queues</button><button data-tab="chapters">Chapters</button><button data-tab="news">Announcements</button><button data-tab="light">Esther Light</button></nav>
+  <div><a class="btn white sm" href="member.html">Member home</a> <button id="logout" class="btn white sm hide">Sign out</button></div>
+</header>
+
+<main id="authView" class="wrap">
+  <section class="card auth"><p class="eyebrow">EFF NATIONALS</p><h1>Admin <em>sign-in.</em></h1><p>Use your approved national staff email. Access is granted by role, not by password.</p>
+    <label for="email">Email</label><input id="email" type="email"><div style="margin-top:14px"><button id="login" class="btn purple">Email me a secure link</button></div><p id="message" class="form-message"></p></section>
+</main>
+
+<main id="appView" class="wrap hide">
+  <!-- DASH -->
+  <section class="panel on" data-panel="dash">
+    <div class="stats" id="stats"></div>
+    <div class="grid2">
+      <div class="card"><p class="eyebrow">MEMBERS BY CHAPTER</p><h2>Where EFF is</h2><table class="tbl" id="byChapter"><thead><tr><th>Chapter</th><th>State</th><th>Members</th></tr></thead><tbody></tbody></table></div>
+      <div class="card"><p class="eyebrow">NEEDS ATTENTION</p><h2>Today</h2><div id="attention" class="module-list"></div></div>
+    </div>
+  </section>
+
+  <!-- MEMBERS -->
+  <section class="panel" data-panel="members">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><p class="eyebrow">MEMBER RECORDS</p><h2>Members</h2></div><button id="exportCsv" class="btn white sm">Export CSV</button></div>
+      <div class="toolbar"><input id="q" placeholder="Search name, school, email, major…"><select id="fJoin"><option value="">Roster: all</option><option>unverified</option><option>pending</option><option>verified</option><option>mismatch</option><option>revoked</option></select><select id="fStatus"><option value="">Membership: all</option><option>candidate</option><option>active</option><option>inactive</option><option>alumni</option></select><select id="fChapter"><option value="">Chapter: all</option></select><select id="fPath"><option value="">Path: all</option><option>member</option><option>alumni</option><option>community</option></select><span id="count" class="small"></span></div>
+      <table class="tbl" id="members"><thead><tr><th>Member</th><th>School · chapter</th><th>Path</th><th>Roster</th><th>Status</th><th>Experience</th><th>Joined</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <!-- QUEUES -->
+  <section class="panel" data-panel="queues">
+    <div class="grid2">
+      <div class="card"><p class="eyebrow">VERIFICATION QUEUE</p><h2>Roster checks</h2><p class="small">Unverified and pending members. Verify after confirming Join It.</p><div id="qVerify" class="module-list"></div></div>
+      <div class="card"><p class="eyebrow">REACH FLAGS</p><h2>Members who asked for help</h2><p class="small">Check-ins marked "I need to REACH" in the last 30 days. Follow up personally.</p><div id="qReach" class="module-list"></div></div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card"><p class="eyebrow">SERVICE HOURS</p><h2>Pending approval</h2><div id="qHours" class="module-list"></div></div>
+      <div class="card"><p class="eyebrow">FUNDRAISING</p><h2>Pending verification</h2><div id="qFund" class="module-list"></div></div>
+    </div>
+  </section>
+
+  <!-- CHAPTERS -->
+  <section class="panel" data-panel="chapters">
+    <div class="grid2">
+      <div class="card"><p class="eyebrow">CHAPTER NETWORK</p><h2>Chapters</h2><table class="tbl" id="chTable"><thead><tr><th>Name</th><th>Location</th><th>Kind</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>
+      <div class="card"><p class="eyebrow">ADD OR EDIT</p><h2 id="chFormTitle">New chapter</h2>
+        <form id="chForm"><input type="hidden" id="chId"><label>Name</label><input id="chNameIn" placeholder="EFF at …"><label>School</label><input id="chSchool"><div class="grid2"><div><label>City</label><input id="chCity"></div><div><label>State</label><input id="chState" maxlength="2"></div></div><div class="grid2"><div><label>Kind</label><select id="chKind"><option value="chapter">Collegiate chapter</option><option value="pgws">Sisterhood branch (PGWS)</option><option value="national">National (no chapter)</option></select></div><div><label>Status</label><select id="chStatus"><option>provisional</option><option selected>active</option><option>probation</option><option>suspended</option><option>dissolved</option></select></div></div><label>Slug (url-safe, unique)</label><input id="chSlug" placeholder="fiu"><label>Dues note (optional)</label><input id="chDues"><div class="toolbar"><button class="btn purple sm" type="submit">Save chapter</button><button class="btn white sm" type="button" id="chReset">Clear</button></div><p id="chMsg" class="form-message"></p></form>
+        <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+        <p class="eyebrow">ROLES</p><h2 style="font-size:20px">Assign a role</h2><p class="small">Chapter leaders appear to their chapter's members. National staff unlocks this admin.</p>
+        <label>Member</label><select id="roleUser"></select><div class="grid2"><div><label>Role</label><select id="roleName"><option value="president">President</option><option value="vice_president">Vice President</option><option value="secretary">Secretary</option><option value="treasurer">Treasurer</option><option value="officer">Officer</option><option value="advisor">Advisor</option><option value="regional">Regional leader</option><option value="national_staff">National staff (admin)</option></select></div><div><label>Chapter (blank for national)</label><select id="roleChapter"><option value="">—</option></select></div></div><div class="toolbar"><button id="roleAdd" class="btn purple sm">Grant role</button></div><p id="roleMsg" class="form-message"></p><div id="roleList" class="module-list"></div></div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="panel" data-panel="news">
+    <div class="grid2">
+      <div class="card"><p class="eyebrow">COMPOSE</p><h2>Announcement</h2><form id="newsForm"><label>Title</label><input id="nTitle"><label>Body</label><textarea id="nBody" rows="5"></textarea><div class="grid2"><div><label>Audience</label><select id="nAud"><option value="all">All members</option><option value="chapter">One chapter</option></select></div><div><label>Chapter</label><select id="nChapter"><option value="">—</option></select></div></div><label>Publish at (blank = now)</label><input id="nWhen" type="datetime-local"><div class="toolbar"><button class="btn purple sm" type="submit">Publish</button></div><p id="nMsg" class="form-message"></p></form></div>
+      <div class="card"><p class="eyebrow">PUBLISHED</p><h2>Recent</h2><div id="newsList" class="module-list"></div></div>
+    </div>
+  </section>
+
+  <!-- LIGHT -->
+  <section class="panel" data-panel="light">
+    <div class="grid2">
+      <div class="card"><p class="eyebrow">ESTHER LIGHT</p><h2>Post today's light</h2><form id="lightForm"><label>Day</label><input id="lDay" type="date"><label>Verse reference</label><input id="lRef" placeholder="Esther 4:14"><label>Verse text</label><textarea id="lText" rows="3"></textarea><label>Reflection (optional)</label><textarea id="lRefl" rows="3"></textarea><div class="toolbar"><button class="btn purple sm" type="submit">Save</button></div><p id="lMsg" class="form-message"></p></form></div>
+      <div class="card"><p class="eyebrow">SCHEDULED</p><h2>Upcoming</h2><div id="lightList" class="module-list"></div></div>
+    </div>
+  </section>
+</main>
+
+<!-- member drawer -->
+<aside id="drawer" class="drawer"><button class="btn white sm" id="dClose" style="float:right">Close</button><div id="dBody"></div></aside>
+
+<script src="supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/core.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

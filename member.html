@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My member home | MyEFF</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@700&family=Poppins:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="myeff.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html"><span class="mark">EFF</span><span><b>MyEFF</b><small>Every Future Fulfilled</small></span></a>
+  <nav id="tabsNav" class="hide">
+    <button data-tab="road" class="on">My road</button><button data-tab="experience">Esther Experience</button><button data-tab="service">Service</button><button data-tab="chapter">My chapter</button><button data-tab="light">Esther Light</button><button data-tab="profile">Profile</button>
+  </nav>
+  <div><a id="adminLink" class="btn white sm hide" href="admin.html">Admin</a> <button id="logout" class="btn white sm hide">Sign out</button></div>
+</header>
+
+<!-- ============ AUTH ============ -->
+<main id="authView" class="wrap">
+  <section class="card auth">
+    <p class="eyebrow">MYEFF · MEMBER HOME</p>
+    <h1>Welcome <em>home.</em></h1>
+    <p>Sign in with your email. We'll send a secure link — no password to remember. New to EFF? The same link creates your free national membership.</p>
+    <label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="email" placeholder="you@school.edu">
+    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button id="sendLogin" class="btn purple">Email me a secure link</button><a class="btn white" href="index.html">Back</a></div>
+    <p id="loginMessage" class="form-message"></p>
+    <p class="small"><strong>Heads up:</strong> the link can land in Spam, Junk, or Promotions. It expires in an hour; request another any time.</p>
+  </section>
+</main>
+
+<!-- ============ APP ============ -->
+<main id="appView" class="wrap hide">
+
+  <!-- onboarding -->
+  <section id="onboard" class="card hide" style="max-width:760px;margin:0 auto">
+    <p class="eyebrow">STEP 1 OF 1</p>
+    <h1 style="font-size:40px">Tell us <em>who you are.</em></h1>
+    <p class="small">This creates your free national membership profile. Your acceptance letter appears the moment you finish.</p>
+    <form id="profileForm">
+      <div class="grid2">
+        <div><label>Full name</label><input id="fullName" required></div>
+        <div><label>Preferred first name (optional)</label><input id="preferredName"></div>
+      </div>
+      <label>Your pathway</label>
+      <select id="memberPath"><option value="member">Current / prospective EFF member</option><option value="alumni">EFF alumni</option><option value="community">Community member / supporter</option></select>
+      <label>Chapter</label>
+      <select id="chapterSel"></select>
+      <label>Your college or university (type it even if it isn't listed)</label><input id="school" required placeholder="School name">
+      <div class="grid2">
+        <div><label>Major (optional)</label><input id="major"></div>
+        <div><label>Expected graduation year (optional)</label><input id="gradYear" type="number" min="2020" max="2040"></div>
+      </div>
+      <div class="grid2">
+        <div><label>City (optional)</label><input id="city"></div>
+        <div><label>State (optional)</label><input id="state" maxlength="2" placeholder="FL"></div>
+      </div>
+      <label style="display:flex;gap:10px;align-items:center;margin-top:16px"><input type="checkbox" id="optIn" style="width:auto"> List me in the member directory (name, school, major, chapter only)</label>
+      <div style="margin-top:16px"><button class="btn purple" type="submit">Create my membership →</button></div>
+      <p id="profileMessage" class="form-message"></p>
+    </form>
+  </section>
+
+  <div id="dashboard" class="hide">
+    <!-- hero road -->
+    <section class="hero-m">
+      <span class="tape">For such a time as this.</span>
+      <h1 id="greeting">Welcome.</h1>
+      <p id="statusLine"></p>
+      <ul class="road" id="road">
+        <i class="fill" id="roadFill"></i>
+        <li data-n="1" id="r1"><b>Called</b>You joined. Your letter is here.</li>
+        <li data-n="2" id="r2"><b>Connected</b>Roster verified; chapter named.</li>
+        <li data-n="3" id="r3"><b>Prepared</b>The Esther Experience, complete.</li>
+        <li data-n="4" id="r4"><b>Serving</b>First service hours approved.</li>
+        <li data-n="5" id="r5"><b>Leading</b>Officer, mentor, or advisor.</li>
+      </ul>
+      <div class="next"><div><b id="nextTitle">Your next right step</b><br><span id="nextCopy"></span></div><button id="nextBtn" class="btn white sm">Go →</button></div>
+    </section>
+
+    <!-- ROAD tab -->
+    <section class="panel on" data-panel="road">
+      <div class="grid2">
+        <div class="card"><p class="eyebrow">AN OFFICIAL WELCOME</p><h2>Your acceptance letter</h2><p class="small">Personalized, signed, and yours to keep. Print it if you like.</p><div class="toolbar"><button id="openLetter" class="btn purple sm">Open my letter</button><button id="printLetter" class="btn white sm">Print</button></div><div id="letterBox"></div></div>
+        <div class="card"><p class="eyebrow">EFF PASSPORT</p><h2>Your stamps</h2><p class="small">Collected as you go. Some arrive on their own; leaders award the rest.</p><div class="passport" id="passport"></div></div>
+      </div>
+      <div class="grid2" style="margin-top:16px">
+        <div class="card"><p class="eyebrow">NATIONAL NEWS</p><h2>Announcements</h2><div id="news" class="module-list"></div></div>
+        <div class="card"><p class="eyebrow">RETENTION CHECK-IN</p><h2>How are you, really?</h2><p class="small">Private. Three quick numbers. If you tap "I need to REACH," a national staff member sees it and follows up.</p>
+          <div class="grid3"><div><label>Academics (1–5)</label><input id="ciA" type="number" min="1" max="5" value="3"></div><div><label>Wellness (1–5)</label><input id="ciW" type="number" min="1" max="5" value="3"></div><div><label>Belonging (1–5)</label><input id="ciB" type="number" min="1" max="5" value="3"></div></div>
+          <label>Anything you want us to know (optional)</label><textarea id="ciNote" rows="2"></textarea>
+          <div class="toolbar"><button id="ciSave" class="btn purple sm">Save check-in</button><button id="ciReach" class="btn gold sm">I need to REACH</button><a class="btn white sm" href="https://reach.estherfundsfoundation.org/defense?tool=triage" target="_blank" rel="noopener">Open REACH tools ↗</a></div>
+          <p id="ciMsg" class="form-message"></p></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE tab -->
+    <section class="panel" data-panel="experience">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap"><div><p class="eyebrow">THE ESTHER EXPERIENCE</p><h2>Eight modules. One preparation.</h2><p id="progressCopy" class="small"></p></div><strong class="big" id="progressNumber">0%</strong></div>
+        <div class="progress"><i id="progressBar"></i></div>
+        <div id="moduleList" class="module-list"></div>
+        <div id="certWrap" class="hide" style="margin-top:18px"><div class="toolbar"><button id="printCert" class="btn purple sm">Print my certificate</button></div><div id="certBox"></div></div>
+      </div>
+    </section>
+
+    <!-- SERVICE tab -->
+    <section class="panel" data-panel="service">
+      <div class="grid2">
+        <div class="card"><p class="eyebrow">SERVICE TRANSCRIPT</p><h2>Log hours</h2><p class="small">Approved hours appear on your transcript. Pending entries can be edited or deleted until reviewed.</p>
+          <label>What you did</label><input id="svTitle" placeholder="Food pantry shift, tutoring, campus cleanup…">
+          <div class="grid2"><div><label>Date</label><input id="svDate" type="date"></div><div><label>Hours</label><input id="svHours" type="number" step="0.25" min="0.25"></div></div>
+          <label>Organization / where</label><input id="svOrg"><label>Reflection — what did your help do?</label><textarea id="svRef" rows="3"></textarea><label>Evidence link (optional: photo, letter, sign-in sheet)</label><input id="svUrl" placeholder="https://">
+          <div class="toolbar"><button id="svAdd" class="btn purple sm">Submit hours</button></div><p id="svMsg" class="form-message"></p>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px"><b>My hours</b><span class="small">Approved: <b id="svTotal">0</b></span></div>
+          <table class="tbl" id="svTable"><thead><tr><th>Date</th><th>What</th><th>Hrs</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>
+        <div class="card"><p class="eyebrow">NATIONAL POPCORN WEEK</p><h2>Fundraising</h2><p class="small">Record what you raised. Staff verifies against the campaign totals.</p>
+          <label>Campaign</label><select id="fdCamp"><option>National Popcorn Week</option><option>Founder's Day</option><option>Chapter fundraiser</option><option>Other</option></select>
+          <div class="grid2"><div><label>Amount raised ($)</label><input id="fdAmt" type="number" step="0.01" min="0"></div><div><label>Note</label><input id="fdNote" placeholder="How / where"></div></div>
+          <div class="toolbar"><button id="fdAdd" class="btn purple sm">Record amount</button></div><p id="fdMsg" class="form-message"></p>
+          <table class="tbl" id="fdTable"><thead><tr><th>Date</th><th>Campaign</th><th>Amount</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- CHAPTER tab -->
+    <section class="panel" data-panel="chapter">
+      <div class="grid2">
+        <div class="card"><p class="eyebrow">MY CHAPTER</p><h2 id="chName">—</h2><p id="chMeta" class="small"></p><div id="chLeaders" class="module-list"></div><p class="small" style="margin-top:10px">Chapter dues, if any, are set locally — ask your chapter leadership. National membership is always free.</p></div>
+        <div class="card"><p class="eyebrow">MEMBER DIRECTORY</p><h2>Find your people</h2><p class="small">Only members who opted in appear here, with name, school, major, and chapter.</p><div class="toolbar"><input id="dirQ" placeholder="Search by name, school, chapter, major…"></div><div id="dirList" class="module-list"></div></div>
+      </div>
+    </section>
+
+    <!-- LIGHT tab -->
+    <section class="panel" data-panel="light">
+      <div class="card" style="max-width:760px;margin:0 auto;text-align:center"><p class="eyebrow">ESTHER LIGHT · OPTIONAL</p><h2>Today's light</h2><div id="lightBox" style="margin-top:14px"></div><p class="small" style="margin-top:14px">Esther Light is optional, always. Faith participation is never a condition of membership.</p></div>
+    </section>
+
+    <!-- PROFILE tab -->
+    <section class="panel" data-panel="profile">
+      <div class="card" style="max-width:760px;margin:0 auto"><p class="eyebrow">MY PROFILE</p><h2>Keep it current</h2>
+        <form id="editForm">
+          <div class="grid2"><div><label>Full name</label><input id="eFull"></div><div><label>Preferred name</label><input id="ePref"></div></div>
+          <label>Chapter</label><select id="eChapter"></select>
+          <label>School</label><input id="eSchool">
+          <div class="grid2"><div><label>Major</label><input id="eMajor"></div><div><label>Graduation year</label><input id="eGrad" type="number"></div></div>
+          <div class="grid2"><div><label>City</label><input id="eCity"></div><div><label>State</label><input id="eState" maxlength="2"></div></div>
+          <div class="grid2"><div><label>Phone (optional)</label><input id="ePhone"></div><div><label>Pronouns (optional)</label><input id="ePron"></div></div>
+          <label>Short bio for the directory (optional)</label><textarea id="eBio" rows="2"></textarea>
+          <label style="display:flex;gap:10px;align-items:center;margin-top:12px"><input type="checkbox" id="eOpt" style="width:auto"> Show me in the member directory</label>
+          <label style="display:flex;gap:10px;align-items:center"><input type="checkbox" id="eEmail" style="width:auto"> Email me national and chapter updates</label>
+          <label style="display:flex;gap:10px;align-items:center"><input type="checkbox" id="eSms" style="width:auto"> Text me important updates (when enabled)</label>
+          <div class="toolbar"><button class="btn purple sm" type="submit">Save changes</button></div><p id="editMsg" class="form-message"></p>
+        </form>
+        <div class="kv" style="margin-top:18px"><b>Email</b><span id="pEmail"></span><b>Roster status</b><span id="pJoinit"></span><b>Membership</b><span id="pStatus"></span><b>Member since</b><span id="pSince"></span></div>
+        <p class="small">Roster verification: complete your free <a href="https://app.joinit.com/o/esther-funds-foundation" target="_blank" rel="noopener">Join It registration</a>; National staff verifies it here.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/core.js"></script>
+<script src="js/member.js"></script>
+</body>
+</html>
