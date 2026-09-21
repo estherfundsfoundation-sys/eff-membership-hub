@@ -80,6 +80,19 @@ tr:last-child td{border-bottom:0}
 .res{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;transition:border-color .15s}
 .res:hover{border-color:var(--p)}
 .res small{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--p)}.res b{display:block;font-size:15px;margin:6px 0 4px;color:var(--d)}.res p{margin:0;font-size:13px;color:var(--mute)}
+
+.story{background:var(--d);color:#fff;padding:64px 0}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+@media(max-width:860px){.story-grid{grid-template-columns:1fr}}
+.story .kicker{background:rgba(255,255,255,.12);color:var(--l)}
+.story h2{color:#fff;font-size:clamp(26px,3.4vw,38px);max-width:16ch}
+.story p{color:#d9cbea;font-size:16px;max-width:52ch}
+.scene{margin:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:26px}
+.scene figcaption{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--l);margin-bottom:10px}
+.scene p{font-size:15px;color:#e6dcf5}.scene b{color:#fff}
+.scene blockquote{margin:16px 0 0;padding:14px 18px;border-left:4px solid var(--g);background:rgba(0,0,0,.18);border-radius:0 10px 10px 0;font-size:16px;font-weight:600;color:#fff}
+.esther{text-align:center;padding:44px 0;border-top:1px solid var(--line)}
+.esther p{font-size:clamp(18px,2.2vw,24px);font-weight:600;color:var(--d);max-width:34ch;margin:0 auto}.esther small{display:block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--p)}
 /* footer */
 footer{background:var(--d);color:#c9bbdc;padding:40px 0 26px;font-size:13px}
 footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
@@ -92,7 +105,7 @@ footer .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding
 <body>
 <div class="topbar"><div class="wrap"><span>Esther Funds Foundation · Official Member Portal</span><span><a href="https://estherfundsfoundation.org/" target="_blank" rel="noopener">Main website</a><a href="https://portal.estherfundsfoundation.org/" target="_blank" rel="noopener">Scholarship Portal</a><a href="https://reach.estherfundsfoundation.org/" target="_blank" rel="noopener">REACH</a><a href="mailto:info@estherfundsfoundation.org">Contact</a></span></div></div>
 <header class="nav"><div class="wrap">
- <a class="brand" href="#top"><img src="eff-logo.png" alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mark',textContent:'EFF'}))"><span><b>MyEFF</b><small>Member portal</small></span></a>
+ <a class="brand" href="#top" aria-label="MyEFF home"><img src="myeff-logo.svg" alt="MyEFF — Esther Funds Foundation member portal" style="height:44px"></a>
  <nav class="main"><a href="#inside">What's inside</a><a href="#path">Membership path</a><a href="#chapters">Chapter directory</a><a href="#resources">Resources</a></nav>
  <div><a class="btn outline" href="member.html">Join — free</a> <a class="btn primary" href="member.html">Member sign-in</a></div>
 </div></header>
@@ -114,6 +127,21 @@ footer .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding
  </aside>
 </div></section>
 
+
+<section class="story"><div class="wrap">
+ <div class="story-grid">
+  <div>
+   <span class="kicker">Why this portal exists</span>
+   <h2>Most students who leave college could have stayed.</h2>
+   <p>They don't leave because they can't do the work. They leave because of a bill nobody explained, a hold nobody lifted, a semester nobody asked about. EFF membership is the crew that asks — and knows the building.</p>
+  </div>
+  <figure class="scene">
+   <figcaption>Picture it</figcaption>
+   <p>Week three. A sophomore opens her portal and sees a red banner: <b>financial aid hold</b>. Her classes drop Friday. She starts typing "I think I'm taking a semester off" — then opens MyEFF instead. REACH triages the hold. A chapter president two dorms away says, "That's the financial aid office. Here's exactly what to ask. Want me to walk over with you?"</p>
+   <blockquote>"I didn't need money that day. I needed someone who knew the building."</blockquote>
+  </figure>
+ </div>
+</div></section>
 <section class="block" id="inside"><div class="wrap">
  <div class="sec-head"><div><h2>What's inside your member home</h2><p>Every tool does something for your record, your chapter, or your persistence.</p></div></div>
  <div class="grid3">
@@ -157,9 +185,10 @@ footer .legal{border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding
  </div>
 </div></section>
 
+<section class="esther"><div class="wrap"><p>"And who knows but that you have come to your royal position for such a time as this?"</p><small>ESTHER 4:14 · FAITH PARTICIPATION IS ALWAYS OPTIONAL</small></div></section>
 <footer><div class="wrap">
  <div class="cols">
-  <div><b>Esther Funds Foundation</b><p style="margin:0;max-width:40ch">MyEFF is the official membership home of Esther Funds Foundation, Inc., a 501(c)(3) nonprofit. Every Future Fulfilled.</p></div>
+  <div><img src="myeff-mark.svg" alt="" style="height:40px;margin-bottom:10px"><b>Esther Funds Foundation</b><p style="margin:0;max-width:40ch">MyEFF is the official membership home of Esther Funds Foundation, Inc., a 501(c)(3) nonprofit. Every Future Fulfilled.</p></div>
   <div><b>Members</b><a href="member.html">Sign in</a><a href="member.html">Join</a><a href="member.html#profile">Communication preferences</a></div>
   <div><b>Chapters</b><a href="#chapters">Directory</a><a href="https://estherfundsfoundation.org/new-eff-chapters" target="_blank" rel="noopener">Start a chapter</a><a href="https://estherfundsfoundation.org/eff-chapter-resources" target="_blank" rel="noopener">Resource Hub</a></div>
   <div><b>Organization</b><a href="https://estherfundsfoundation.org/" target="_blank" rel="noopener">Main website</a><a href="mailto:info@estherfundsfoundation.org">Contact</a><a href="admin.html">Administration</a></div>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80" role="img" aria-label="MyEFF">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#42127F"/><stop offset="1" stop-color="#7A4DD6"/></linearGradient></defs>
+  <rect x="0" y="4" width="72" height="72" rx="18" fill="url(#g)"/>
+  <!-- open door + spark: the member home -->
+  <path d="M22 58 V26 a3 3 0 0 1 3 -3 h16 a3 3 0 0 1 3 3 v32 z" fill="#ffffff" opacity=".95"/>
+  <path d="M44 23 l10 -6 v41 l-10 -6 z" fill="#C9B4F2"/>
+  <circle cx="39" cy="42" r="2.2" fill="#42127F"/>
+  <path d="M56 14 l2.2 5.2 5.2 2.2 -5.2 2.2 -2.2 5.2 -2.2 -5.2 -5.2 -2.2 5.2 -2.2 z" fill="#F2C14E"/>
+  <text x="86" y="50" font-family="Inter, system-ui, Segoe UI, Arial, sans-serif" font-size="40" font-weight="800" letter-spacing="-1.5" fill="#2A0B55">My<tspan fill="#42127F">EFF</tspan></text>
+  <text x="88" y="68" font-family="Inter, system-ui, Segoe UI, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="2.4" fill="#6f6184">ESTHER FUNDS FOUNDATION · MEMBER PORTAL</text>
+</svg>
