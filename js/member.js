@@ -197,7 +197,7 @@
   async function loadLight() {
     const today = new Date().toISOString().slice(0, 10);
     const { data } = await db.from('eff_light_daily').select('*').lte('day', today).order('day', { ascending: false }).limit(1).maybeSingle();
-    $('lightBox').innerHTML = data ? `<p style="font:26px Caveat,cursive;color:var(--p);margin:0">\u201c${esc(data.verse_text)}\u201d</p><p class="small"><b>${esc(data.verse_ref)}</b></p>${data.reflection ? `<p style="max-width:56ch;margin:12px auto 0">${esc(data.reflection)}</p>` : ''}` : '<p class="small">Today\u2019s light hasn\u2019t been posted yet. Esther 4:14 \u2014 for such a time as this.</p>';
+    $('lightBox').innerHTML = data ? `<p style="font:600 22px/1.4 Inter,sans-serif;color:var(--p);margin:0">\u201c${esc(data.verse_text)}\u201d</p><p class="small"><b>${esc(data.verse_ref)}</b></p>${data.reflection ? `<p style="max-width:56ch;margin:12px auto 0">${esc(data.reflection)}</p>` : ''}` : '<p class="small">Today\u2019s light hasn\u2019t been posted yet. Esther 4:14 \u2014 for such a time as this.</p>';
   }
 
   /* ---------- profile ---------- */
